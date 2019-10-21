@@ -8,9 +8,32 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import styled from "styled-components"
 import Header from "./header"
+import NavBar from "./navigation/NavBar"
+import SEO from "../components/seo"
 import "./layout.css"
+
+const LayoutStyle = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 20vh 85vh 40vh 20vh 30vh;
+  min-height: 200vh;
+
+  .header {
+    grid-column: 2/8;
+    grid-row: 1/2;
+  }
+
+  @media (max-width: 425px) {
+    grid-template-rows: unset;
+
+    .header {
+      grid-row: 1/2;
+      grid-column: 1/9;
+    }
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,24 +47,14 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+    <LayoutStyle>
+      <div className="header">
+        <SEO title="Time Peace" />
+        <Header siteTitle="TimePeace" />
+        <NavBar />
       </div>
-    </>
+      {children}
+    </LayoutStyle>
   )
 }
 

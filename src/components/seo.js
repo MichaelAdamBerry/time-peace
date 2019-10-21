@@ -68,7 +68,17 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+      //
+    >
+      <link
+        href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:400,500,700&display=swap"
+        rel="stylesheet"
+      ></link>
+      <link
+        href="https://fonts.googleapis.com/css?family=Cousine:400,700|Permanent+Marker&display=swap"
+        rel="stylesheet"
+      ></link>
+    </Helmet>
   )
 }
 

@@ -1,10 +1,22 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `TimePeace Online Vintage and Luxury Watch Store`,
+    description: `Purchase classic Time Pieces and help combat climate change. 10% of proceeds are donated to Greenpeace.`,
+    author: `@MichaelAdamBerry`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        shopName: `plant-and-pot-shop`,
+        accessToken: `8bf91abc7293b7b852db4dab714831ed`,
+        verbose: true,
+        paginationSize: 250,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

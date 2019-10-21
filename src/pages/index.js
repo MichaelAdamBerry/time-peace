@@ -1,21 +1,52 @@
-import React from "react"
-import { Link } from "gatsby"
-
+import React, { useState, useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Welcome from "../components/landing/Welcome"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const { allShopifyProduct } = useStaticQuery(graphql`
+    query allCurrentProducts {
+      allShopifyProduct {
+        edges {
+          node {
+            id
+            tags
+            description
+            title
+            descriptionHtml
+            productType
+            handle
+            priceRange {
+              maxVariantPrice {
+                amount
+              }
+            }
+            images {
+              localFile {
+                url
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  const [product, setProduct] = useState()
+
+  useEffect(async () => {
+    const startingProduct = await allShopifyProduct.edges[0]
+    setProduct(() => startingProduct.node)
+  }, [])
+  return (
+    <Layout>
+      <Welcome />
+    </Layout>
+  )
+}
 
 export default IndexPage

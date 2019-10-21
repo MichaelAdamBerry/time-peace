@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="20" height="20" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Next" clip-path="url(#clip-path)">
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(20 20) rotate(180)" fill="none" stroke="#2b2b2b" stroke-width="1.5">
+      <circle cx="10" cy="10" r="10" stroke="none"/>
+      <circle cx="10" cy="10" r="9.25" fill="none"/>
+    </g>
+    <g id="Group_4" data-name="Group 4" transform="translate(241.5 183) rotate(180)">
+      <path id="Polygon_2" data-name="Polygon 2" d="M4,0,8,4H0Z" transform="translate(227.5 177) rotate(-90)" fill="#2b2b2b"/>
+      <line id="Line_5" data-name="Line 5" x2="4.667" transform="translate(230.833 173)" fill="none" stroke="#2b2b2b" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
